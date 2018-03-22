@@ -29,7 +29,26 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee 
+{
+  constructor (first_name, last_name, email, age)
+  {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
+
+  makeWidget()
+  {
+    return this.first_name + " " + this.last_name + " Widget";
+  }
+}
+
+
+var newGuy = new Employee ("Jacob", "Burton", "jacobburton@gmail.com", 34);
+//console.log(newGuy.makeWidget());
+//console.log(newGuy);
 
 
 
@@ -49,7 +68,25 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee
+{
+  constructor(first_name, last_name, email, age)
+  {
+    super(first_name, last_name, email, age)
+    this.reports = [];
+  }
+
+  hire(employee)
+  {
+    this.reports.push(employee);
+  }
+  fire(index)
+  {
+    this.reports.splice(index, 1);
+  }
+}
+var boss = new Manager ("Jacob", "Burton", "jacobburton@gmail.com", 34)
+boss
 
 
 
@@ -75,10 +112,59 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager extends Manager
+{
+  constructor (first_name, last_name, email, age)
+  {
+    super (first_name, last_name, email, age)
+    //this.reports = reports;
+    this.title = "Not a manager";
+    this.bonus = 0;
+    this.hires = 0;
+      
+  }
 
+  hire(employee)
+  {
+    this.reports.push(employee);
+    this.hires++;
+    if (this.hires === 0)
+    {
+      this.title = "Not a manager";
+    }
+    else if (this.hires > 0 && this.hires <= 3)
+    {
+      this.title = "Barely Manager";
+    } 
+    else if (this.hires >= 4 && this.hires <= 10)
+    {
+      this.title = "Mostly Manager";
+    } 
+    else if (this.hires >= 11 && this.hires <= 50)
+    {
+      this.title = "Manager";
+    }
+    else if (this.hires >= 51 && this.hires <= 100)
+    {
+      this.title = "Manager Plus";
+    }
+    else if (this.hires >= 101)
+    {
+      this.title = "Bestest Manager";
+    }
+  }
+  fire(index)
+  {
+    this.reports.splice(index, 1);
+    this.bonus += 100;
+    this.hires--;
+  }
 
+ 
+}
 
+var bigBoss = new Manager ("Jacob", "Burton", "jacobburton@gmail.com", 34)
+bigBoss;
 ////////// PROBLEM 4 - Black Diamond //////////
 
 /*
@@ -102,6 +188,33 @@
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine 
+{
+  constructor ()
+  {
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+
+  makeWidgets(num_made)
+  {
+    this.widgets_made_count += num_made;
+    this.wear_and_tear_count += Math.floor(num_made / 50);
+  }
+
+  fixMachine()
+  {
+    this.needs_reboot = true;
+  }
+  rebootComplete() {} 
+  
+  reboot()
+  {
+    this.wear_and_tear_count -= 10;
+    this.needs_reboot = false;
+    return this.rebootComplete;
+  }
 
 
+}

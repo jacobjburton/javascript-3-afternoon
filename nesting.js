@@ -50,7 +50,21 @@ var employees = [
     3. Return the updated employee array.
 */
 
-//Code Here
+function employeeUpdater ()
+{
+  for (var i = 0; i < employees.length; i++)
+  {
+    if (employees[i].firstName === "Theo")
+    {
+      delete employees[i];
+    }
+    else if (employees[i].firstName === "Lorie")
+    {
+      employees[i].department = "HR";
+    }
+  }
+  return employees;
+}
 
 
 
@@ -68,7 +82,20 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
     3. Return the updated array.
 */
 
-//Code Here
+function removeDuplicates (workplaceAccidents)
+{
+  for (var i = workplaceAccidents.length - 1; i >= 0; i--)
+  {
+    for (var j = workplaceAccidents.length - 1; j >= 0; j--)
+    {
+      if (workplaceAccidents[i] === workplaceAccidents[j] && i !== j)
+      {
+        workplaceAccidents.splice(j, 1);
+      }
+    }
+  }
+  return workplaceAccidents;
+}
 
 
 
@@ -96,9 +123,8 @@ var cat = {
     2. Assign fluffy2ndFriend the name of Fluffy's 2nd friend.
 */
 
-//Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1];
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -138,8 +164,19 @@ var myCar = {
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
-
+function recordCleaner ()
+{ 
+  
+  //var {accidents} = myCar;
+  //console.log(accidents);
+  for (var i = 0; i < myCar.accidents.length; i++)
+  {
+    myCar.accidents[i].atFaultForAccident = false;
+  }
+  //console.log(accidents)
+  return myCar;
+}
+//recordCleaner();
 
 
 ////////// PROBLEM 5 //////////
@@ -157,6 +194,26 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
     4. Return the modified numsArr.
 */
 
-//Code Here
+function looper ()
+{
+  
+  //console.log(numsArr);
+  for (var i = 0; i < numsArr.length; i++)
+  {
+    for (var j = 0; j < numsArr[i].length; j++)
+    {
+      if (numsArr[i][j] % 2 === 0)
+      {
+        numsArr[i][j] = "even";
+      }
+      else
+      {
+        numsArr[i][j] = "odd";
+      }
+    }
+  }
+  //console.log(numsArr);
+  return numsArr;
+}
 
-
+//looper();
